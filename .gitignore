@@ -1,0 +1,23 @@
+# Virtual env metadata
+.venv
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables file
+.env
+
+# Compiled Python files
+*.pyc
+
+# Logs
+*.log
+
+# Database
+*.db
+
+# IDE-specific files
+.vscode/
