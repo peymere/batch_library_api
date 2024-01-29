@@ -19,10 +19,10 @@ class Book(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f"<Book #{self.book_id}: isbn_number: {self.isbn_number}, title: {self.title}, checked_out: {self.checked_out}, checked_out_by: user{self.checked_out_by}, overdue: {self.overdue}>"
-    
+
+# sets due_date and overdue fields when book is checked out or returned 
 def set_due_date_and_overdue(mapper, connection, target):
     if target.checked_out:
-        # target.checkout_date = datetime.utcnow()
         target.due_date = target.checkout_date + timedelta(weeks=2)
         target.overdue = datetime.utcnow() > target.due_date
     else:
@@ -40,4 +40,4 @@ class User(db.Model, SerializerMixin):
     is_librarian = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
-        return f"<User #{self.user_id}, is_librarian={self.is_librarian}>"
+        return f"<User #{self.user_id}, is_librarian: {self.is_librarian}>"
